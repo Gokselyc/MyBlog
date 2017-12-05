@@ -25,7 +25,7 @@ namespace MyWebSite.Models
         public string Description { get; set; }  
 
         [Display(Name = "Fotoğraf")]
-        public byte Photo { get; set; }
+        public string Photo { get; set; }
 
     }
 }

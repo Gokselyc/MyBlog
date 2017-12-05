@@ -10,22 +10,22 @@ using MyWebSite.Models;
 namespace MyWebSite.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BlogsController : Controller
+    public class HomeController : Controller
     {
         private readonly MyWebSiteContext _context;
 
-        public BlogsController(MyWebSiteContext context)
+        public HomeController(MyWebSiteContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/Blogs
+        // GET: Admin/Home
         public async Task<IActionResult> Index()
         {
             return View(await _context.Blog.ToListAsync());
         }
 
-        // GET: Admin/Blogs/Details/5
+        // GET: Admin/Home/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,13 +43,13 @@ namespace MyWebSite.Areas.Admin.Controllers
             return View(blog);
         }
 
-        // GET: Admin/Blogs/Create
+        // GET: Admin/Home/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Blogs/Create
+        // POST: Admin/Home/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -65,7 +65,7 @@ namespace MyWebSite.Areas.Admin.Controllers
             return View(blog);
         }
 
-        // GET: Admin/Blogs/Edit/5
+        // GET: Admin/Home/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,7 +81,7 @@ namespace MyWebSite.Areas.Admin.Controllers
             return View(blog);
         }
 
-        // POST: Admin/Blogs/Edit/5
+        // POST: Admin/Home/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -116,7 +116,7 @@ namespace MyWebSite.Areas.Admin.Controllers
             return View(blog);
         }
 
-        // GET: Admin/Blogs/Delete/5
+        // GET: Admin/Home/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +134,7 @@ namespace MyWebSite.Areas.Admin.Controllers
             return View(blog);
         }
 
-        // POST: Admin/Blogs/Delete/5
+        // POST: Admin/Home/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id)

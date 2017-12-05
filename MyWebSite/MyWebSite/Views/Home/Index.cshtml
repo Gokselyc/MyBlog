@@ -1,9 +1,15 @@
-﻿<div id="main" class="site-main">
+﻿@model IEnumerable<MyWebSite.Models.Blog>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main" class="site-main">
     <!-- Page changer wrapper -->
     <div class="pt-wrapper">
         <!-- Subpages -->
         <div class="subpages">
-
+            
             <!-- Home Subpage -->
             <section class="pt-page pt-page-1 section-with-bg section-paddings-0" style="background-image: url(/My-Template/images/home_page_bg_2.jpg);" data-id="home">
                 <div class="home-page-block-bg">
@@ -316,7 +322,7 @@
                     <h5 class="section-description">My Diary</h5>
                 </div>
                 <div class="blog-masonry">
-                    <!-- Blog Post 1 -->
+                    <!-- Blog Post 1 -->                    
                     <div class="item">
                         <div class="blog-card">
                             <div class="media-block">
@@ -328,7 +334,7 @@
                             </div>
                             <div class="post-info">
                                 <ul class="category">
-                                    <li><a href="#">Travel</a></li>
+                                    <li><a href="#">travel</a></li>
                                 </ul>
                                 <a href="blog-post-1.html"><h4 class="blog-item-title">Bootstrap is the Most Popular Framework</h4></a>
                             </div>

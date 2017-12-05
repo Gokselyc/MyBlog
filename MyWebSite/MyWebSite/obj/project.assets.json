@@ -13125,11 +13125,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\gokse\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\MyWebSite\\MyWebSite\\MyWebSite.csproj",
+      "projectUniqueName": "C:\\Users\\gokse\\Source\\Repos\\MyBog\\MyWebSite\\MyWebSite\\MyWebSite.csproj",
       "projectName": "MyWebSite",
-      "projectPath": "C:\\Users\\gokse\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\MyWebSite\\MyWebSite\\MyWebSite.csproj",
+      "projectPath": "C:\\Users\\gokse\\Source\\Repos\\MyBog\\MyWebSite\\MyWebSite\\MyWebSite.csproj",
       "packagesPath": "C:\\Users\\gokse\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gokse\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\MyWebSite\\MyWebSite\\obj\\",
+      "outputPath": "C:\\Users\\gokse\\Source\\Repos\\MyBog\\MyWebSite\\MyWebSite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
