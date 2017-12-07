@@ -20,3 +20,14 @@ C:\Users\gokse\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\My
 C:\Users\gokse\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\MyWebSite.AssemblyInfo.cs
 C:\Users\gokse\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\MyWebSite.dll
 C:\Users\gokse\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\MyWebSite.pdb
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\bin\Debug\netcoreapp2.0\MyWebSite.deps.json
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\bin\Debug\netcoreapp2.0\MyWebSite.runtimeconfig.json
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\bin\Debug\netcoreapp2.0\MyWebSite.runtimeconfig.dev.json
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\bin\Debug\netcoreapp2.0\MyWebSite.dll
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\bin\Debug\netcoreapp2.0\MyWebSite.pdb
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\MyWebSite.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\MyWebSite.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\MyWebSite.AssemblyInfoInputs.cache
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\MyWebSite.AssemblyInfo.cs
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\MyWebSite.dll
+C:\Users\Admin\Source\Repos\MyBog\MyWebSite\MyWebSite\obj\Debug\netcoreapp2.0\MyWebSite.pdb
