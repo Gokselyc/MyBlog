@@ -4,23 +4,25 @@
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/_Layout.cshtml";
 }
+<br />
+<br />
 <p>
     <a class="btn btn-block btn-success" asp-action="Create">Yeni İçerik Ekle</a>
 </p>
-<table class="table">
+<table class="display responsive nowrap" id="tblRecords">
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Tag)
+                   <span class="badge badge-info">@Html.DisplayNameFor(model => model.Tag)</span> 
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Title)
+                    <span class="badge badge-info">@Html.DisplayNameFor(model => model.Title)</span> 
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Description)
+                    <span class="badge badge-info">@Html.DisplayNameFor(model => model.Description)</span> 
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Photo)
+                    <span class="badge badge-info">@Html.DisplayNameFor(model => model.Photo)</span> 
                 </th>
             <th></th>
         </tr>
@@ -43,9 +45,28 @@
             <td>
                 <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.BlogID">Düzenle</a> |
                 <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.BlogID">Detay</a> |
-                <a class="" asp-action="Delete" asp-route-id="@item.BlogID">Sil</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BlogID">Sil</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tblRecords').DataTable({
+                "responsive": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json"
+                }
+            });
+        });
+
+    </script>
+
+}
+
+
