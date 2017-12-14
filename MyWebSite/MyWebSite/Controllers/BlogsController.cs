@@ -6,16 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyWebSite.Models;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MyWebSite.Controllers
 {
     public class BlogsController : Controller
     {
         private readonly MyWebSiteContext _context;
+        private readonly IHostingEnvironment hostingEnvironment;
 
-        public BlogsController(MyWebSiteContext context)
+        public BlogsController(MyWebSiteContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Blogs
@@ -53,13 +58,41 @@ namespace MyWebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BlogID,Tag,Title,Description,Photo")] Blog blog)
+        public async Task<IActionResult> Create([Bind("BlogID,Tag,Title,Description,Photo")] Blog blog, IFormFile upload)
         {
+
+            //dosya uzantısı ıcın gecerliik denetimi
+            if (upload != null && !IsExtensionValid(upload))
+            {
+                ModelState.AddModelError("Photo", "Dosya uzantısı jpg, jpeg ,gif , png olmalıdır.");
+            }
+            else if (upload == null)
+            {
+                ModelState.AddModelError("Photo", "Resim yüklemeniz gerekmektedir");
+
+            }
+
+
+
+
             if (ModelState.IsValid)
             {
+
+                //dosya yuklemesi
+                if (upload != null && upload.Length > 0 && IsExtensionValid(upload))
+                {
+                    blog.Photo = await UploadFileAsync(upload);
+                }
+
+
+
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+
+
+                
+
             }
             return View(blog);
         }
@@ -85,17 +118,38 @@ namespace MyWebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("BlogID,Tag,Title,Description,Photo")] Blog blog)
+        public async Task<IActionResult> Edit(int? id, [Bind("BlogID,Tag,Title,Description,Photo")] Blog blog, IFormFile upload)
         {
             if (id != blog.BlogID)
             {
                 return NotFound();
             }
 
+
+            //dosya uzantısı ıcın gecerliik denetimi
+            if (upload != null && !IsExtensionValid(upload))
+            {
+                ModelState.AddModelError("Photo", "Dosya uzantısı jpg, jpeg ,gif , png olmalıdır.");
+            }
+            else if (upload == null && blog.Photo == null)//eger resim yüklenmisse bir daha sectirmiyor
+            {
+                ModelState.AddModelError("Photo", "Resim yüklemeniz gerekmektedir");
+
+            }
+
+
             if (ModelState.IsValid)
             {
                 try
                 {
+
+                    //dosya yuklemesi
+                    if (upload != null && upload.Length > 0 && IsExtensionValid(upload))
+                    {
+                        blog.Photo = await UploadFileAsync(upload);
+                    }
+
+
                     _context.Update(blog);
                     await _context.SaveChangesAsync();
                 }
@@ -148,5 +202,48 @@ namespace MyWebSite.Controllers
         {
             return _context.Blog.Any(e => e.BlogID == id);
         }
+
+
+        //upload edilecek dosyanın geçerli mi onu kontrol eder.
+        private bool IsExtensionValid(IFormFile upload)
+        {
+            if (upload != null)
+            {
+                var allowedExtension = new string[] { ".jpg", ".png", ".gif", ".jpeg" };
+                var extension = Path.GetExtension(upload.FileName).ToLowerInvariant();
+                return allowedExtension.Contains(extension);
+            }
+            return false;
+        }
+
+
+        private async Task<string> UploadFileAsync(IFormFile upload)
+        {
+            //dosya upload
+            if (upload != null && upload.Length > 0 && IsExtensionValid(upload))
+            {
+                var fileName = upload.FileName;
+                var extension = Path.GetExtension(fileName);
+                var uploadLocation = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
+
+
+
+                //yoksa olustur kodu
+                if (!Directory.Exists(uploadLocation))
+                {
+                    Directory.CreateDirectory(uploadLocation);
+                }
+
+                uploadLocation += "/" + fileName;
+
+                using (var stream = new FileStream(uploadLocation, FileMode.Create))
+                {
+                    await upload.CopyToAsync(stream);
+                }
+                return fileName;
+            }
+            return null;
+        }
+
     }
 }
