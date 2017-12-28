@@ -316,20 +316,21 @@
             </section>
             <!-- End Resume Subpage -->
             <!-- Blog Subpage -->
-@foreach (var blogItem in Model)
-{
+
             <section class="pt-page pt-page-5" data-id="blog">
                 <div class="section-title-block">
                     <h2 class="section-title">Blog</h2>
                     <h5 class="section-description">My Diary</h5>
                 </div>
+@foreach (var blogItem in Model)
+{
                 <div class="blog-masonry">
                     <!-- Blog Post 1 -->   
                     <div class="item">
                         <div class="blog-card">
                             <div class="media-block">
-                                <a asp-controller="Blogs" asp-action="Index">
-                                    <img class="post-image img-responsive" src="/My-Template/images/blog/blog_post_1.jpg" alt="blog-post-1" />
+                                <a asp-controller="Blogs" asp-for="@blogItem.BlogID" asp-action="Index">
+                                    <img class="post-image img-responsive" src="~/uploads/@blogItem.Photo" alt="blog-post-1" />
                                     <div class="mask"></div>
                                 </a>
                             </div>
@@ -343,8 +344,9 @@
                     </div>
                    
                 </div>
+                }
             </section>
-}
+
             <!-- End Blog Subpage -->
             <!-- Contact Subpage -->
             <section class="pt-page pt-page-6" data-id="contact">

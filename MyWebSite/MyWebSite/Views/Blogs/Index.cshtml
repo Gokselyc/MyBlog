@@ -103,18 +103,17 @@
         </header>
 
 
-        @foreach(var blogItem in Model)
-
-        {
+       
 
 
        
         <div id="main" class="site-main">
             <div class="page-wrapper">
                 <a class="blog-back-button" href="~/#blog"><i class="fa fa-angle-left"></i></a>
-
+@foreach (var blogItem in Model)
+{
                 <div class="blog-post-main-image">
-                    <img class="post-image img-responsive" src="~/My-Template/images/blog/blog_post_1.jpg" alt="blog-post-1" />
+                    <img class="post-image img-responsive" src="~/uploads/@blogItem.Photo" alt="blog-post-1" />
                 </div>
 
                 <div class="blog-post-content">
@@ -123,12 +122,11 @@
                         <li><a>@blogItem.Tag</a></li>
                        
                     </ul>
-                    <p class="lead">@blogItem.Description</p>
-
-                    
+                    <p class="lead">@blogItem.Description</p>                   
                  <br />
                     <br />
-
+                    </div>
+                    }
    
        <div id="disqus_thread"></div>
        <script>
@@ -151,13 +149,8 @@
        </script>
        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
    </div>
-
-                </div>
-
-            </div>
-        }
-   
-
+   </div>
+   </div>
     <!-- /Demo Color changer -->
 
     <script src="~/My-Template/js/bootstrap.min.js"></script>
